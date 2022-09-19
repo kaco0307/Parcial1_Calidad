@@ -172,20 +172,24 @@ public class Tienda {
         
     }
     
-    public boolean BuscarVideojuego(String IDE ){
+    public VideoJuego BuscarVideojuego(String IDE ){
         
         Iterator it = videojuego.iterator();
-        VideoJuego vide;
+        VideoJuego vide = new VideoJuego();
         
         boolean sw = false;
-        while(it.hasNext() && sw){
+        while(it.hasNext() && !sw){
             vide = (VideoJuego)it.next();
             if(vide.getIDE().equals(IDE)){
                 sw=true;
             }
         }
       
-     return sw;
+     if(sw){
+         return vide;
+     }else{
+         return null;
+     }
         
     }
     
