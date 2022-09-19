@@ -55,7 +55,7 @@ public class Tienda {
                 crearVideojuego();
             break;
             case 6:
-               
+               eliminar_videojuego();
             break;
             case 7:
                
@@ -135,35 +135,40 @@ public class Tienda {
         
     }
     
-    public boolean BuscarVideojuego(String IDE ){
+  public VideoJuego BuscarVideojuego(String IDE ){
         
         Iterator it = videojuego.iterator();
-        VideoJuego vide;
+        VideoJuego vide = new VideoJuego();
         
         boolean sw = false;
-        while(it.hasNext() && sw){
+        while(it.hasNext() && !sw){
             vide = (VideoJuego)it.next();
             if(vide.getIDE().equals(IDE)){
                 sw=true;
             }
         }
       
-     return sw;
-        
-    }
+     if(sw){
+         return vide;
+     }else{
+         return null;
+     }
+  }
     // case 5
     public void crearVideojuego() {
-        
+        int codigo;
+        String Codigo_Ejemplar;
         VideoJuego vide = new VideoJuego();
         
         System.out.println("\nIngrese nombre: ");
         vide.setNombre(sc.next());
         System.out.println("Ingrese Codigo");
-        vide.setCodigo(sc.nextInt());
+        codigo = sc.nextInt();
+        vide.setCodigo(codigo);
         System.out.println("Ingrese Codigo_Ejemplar");
-        vide.setCodigo_Ejemplar(sc.next());
-        System.out.println("Ingrese IDE");
-        vide.setIDE(sc.next());
+        Codigo_Ejemplar = sc.next();
+        vide.setCodigo_Ejemplar(Codigo_Ejemplar);
+        vide.setIDE(codigo + Codigo_Ejemplar);
         
         System.out.println("\n--VideoJuego creado--\n");
         
@@ -172,7 +177,45 @@ public class Tienda {
     }
     
     // case 6 EliminarVideoJuego
-    
+    public void eliminar_videojuego(){
+        
+        
+        
+        System.out.print("\nIngrese la ide del videojuego : ");
+        String cod = sc.next();
+        
+        VideoJuego vide = BuscarVideojuego(cod);
+      
+
+        
+        if(vide != null){
+            
+            System.out.println(vide.getNombre());
+            
+            System.out.println("Esta seguro en eliminar este videojuego si(1) no(2)");
+            System.out.print("opcion: ");
+            int opc = sc.nextInt();
+
+            if(opc==1){
+                videojuego.remove(vide);
+                System.out.println("Se ha eliminado el videojuego");
+            }
+                
+               
+            else if(opc==2){
+                System.out.println("La operacion se ha cancelado.");
+       
+              
+            } 
+              
+            
+             
+        }else{
+            System.out.println("El videojuego no existe");
+        }
+        
+        
+    }
 
     
     // case n8. Listar videojuego
@@ -182,9 +225,9 @@ public class Tienda {
         while(it.hasNext()){
             VideoJuego vide = (VideoJuego)it.next();
             System.out.println("\nNombre: "+vide.getNombre());
-            System.out.println("Cedula: "+vide.getCodigo());
-            System.out.println("Correo: "+vide.getCodigo_Ejemplar());
-            System.out.println("Dirección: "+vide.getIDE());
+            System.out.println("Codigo: "+vide.getCodigo());
+            System.out.println("CodigoEjemplar: "+vide.getCodigo_Ejemplar());
+            System.out.println("ID: "+vide.getIDE());
             System.out.println("-----------------------");
         }
     }
