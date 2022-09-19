@@ -84,20 +84,22 @@ public class Tienda {
     
     public void crearUsuario() {
         
-        // Usuario usu = new Usuario();
+        Usuario usu = new Usuario();
         
-        System.out.println("\nIngrese nombre: ");
-        usu.setNombre(sc.next());
-        System.out.println("Ingrese Cedula");
-        usu.setCedula(sc.nextInt());
-        System.out.println("Ingrese Correo");
-        usu.setCorreo(sc.next());
-        System.out.println("Ingrese Dirreción");
-        usu.setDireccion(sc.next());
-        System.out.println("Ingrese Telefono");
-        usu.setTelefono(sc.nextInt());
+            sc.skip("\n");
+            System.out.println("\nIngrese nombre: ");
+            usu.setNombre(sc.nextLine());
+            System.out.println("Ingrese Cedula");
+            usu.setCedula(sc.nextInt());
+            System.out.println("Ingrese Correo");
+            usu.setCorreo(sc.next());
+            sc.skip("\n");
+            System.out.println("Ingrese Dirreción");
+            usu.setDireccion(sc.nextLine());
+            System.out.println("Ingrese Telefono");
+            usu.setTelefono(sc.nextInt());
         
-        System.out.println("\n--Usuario creado--\n");
+            System.out.println("\n--Usuario Ingresado--\n");
         
         usuario.add(usu);
         
