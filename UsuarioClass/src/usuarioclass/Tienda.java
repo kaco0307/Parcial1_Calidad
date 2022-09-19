@@ -48,7 +48,7 @@ public class Tienda {
             break;
             
             case 4:
-               
+               Modificar_Usuario();
             break;
             
             case 5:
@@ -85,15 +85,16 @@ public class Tienda {
     public void crearUsuario() {
         
         Usuario usu = new Usuario();
-        
+        sc.skip("\n");
         System.out.println("\nIngrese nombre: ");
-        usu.setNombre(sc.next());
+        usu.setNombre(sc.nextLine());
         System.out.println("Ingrese Cedula");
         usu.setCedula(sc.nextInt());
         System.out.println("Ingrese Correo");
         usu.setCorreo(sc.next());
+        sc.skip("\n");
         System.out.println("Ingrese Dirreción");
-        usu.setDireccion(sc.next());
+        usu.setDireccion(sc.nextLine());
         System.out.println("Ingrese Telefono");
         usu.setTelefono(sc.nextInt());
         
@@ -118,20 +119,56 @@ public class Tienda {
     }
     
     
-    public boolean BuscarUsuario(int ced ){
+    public void Modificar_Usuario(){
+        
+        System.out.print("\nIngrese la cedula del usuario a modificar: ");
+        int ced = sc.nextInt();
+        
+        Usuario usu = BuscarUsuario(ced);
+        
+        if(usu != null){
+            
+            sc.skip("\n");
+            System.out.println("\nIngrese nombre: ");
+            usu.setNombre(sc.nextLine());
+            System.out.println("Ingrese Cedula");
+            usu.setCedula(sc.nextInt());
+            System.out.println("Ingrese Correo");
+            usu.setCorreo(sc.next());
+            sc.skip("\n");
+            System.out.println("Ingrese Dirreción");
+            usu.setDireccion(sc.nextLine());
+            System.out.println("Ingrese Telefono");
+            usu.setTelefono(sc.nextInt());
+        
+            System.out.println("\n--Usuario Modificado--\n");
+            
+            
+        }else{
+            System.out.println("\nEl usuario no existe");
+        }
+        
+    }
+    
+    
+    public Usuario BuscarUsuario(int ced ){
         
         Iterator it = usuario.iterator();
-        Usuario usu;
+        Usuario usu = new  Usuario();
         
         boolean sw = false;
-        while(it.hasNext() && sw){
+        while(it.hasNext() && !sw){
             usu = (Usuario)it.next();
             if(usu.getCedula() == ced){
                 sw=true;
             }
         }
       
-     return sw;
+     if(sw){
+         return usu;
+     }else{
+         return null;
+     }
         
     }
     
