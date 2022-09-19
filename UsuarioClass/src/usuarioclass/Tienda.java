@@ -44,11 +44,11 @@ public class Tienda {
             break;
             
             case 3:
-               
+               System.out.println("\nFuncion no disponible por el momento");
             break;
             
             case 4:
-               
+               Modificar_Usuario();
             break;
             
             case 5:
@@ -58,19 +58,19 @@ public class Tienda {
                eliminar_videojuego();
             break;
             case 7:
-               
+               System.out.println("\nFuncion no disponible por el momento");
             break;
             case 8:
                 listarVideojuego();
             break;
             case 9:
-                
+                System.out.println("\nFuncion no disponible por el momento");
             break;
             case 10:
-                
+                System.out.println("\nFuncion no disponible por el momento");
             break;
             case 11:
-                
+                System.out.println("\nFuncion no disponible por el momento");
             break;
             case 12:
                 System.out.println("\nHasta Pronto");
